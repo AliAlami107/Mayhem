@@ -12,9 +12,6 @@ SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption('Mayhem')
 
-#Window logo
-icon = pygame.image.load('Mayhem\images\Logo.png')
-pygame.display.set_icon(icon)
 
 #Colors
 BLUE = (50,50,255)
