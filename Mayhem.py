@@ -13,7 +13,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 pygame.display.set_caption('Mayhem')
 
 #Window logo
-icon = pygame.image.load('images\Logo.png')
+icon = pygame.image.load('Mayhem\images\Logo.png')
 pygame.display.set_icon(icon)
 
 #Colors
@@ -22,7 +22,7 @@ BLUE = (50,50,255)
 class Spaceship(pygame.sprite.Sprite):
   def __init__(self, pos_x, pos_y, speed):
     super().__init__()
-    self.image = pygame.Surface(500,500)
+    self.image = pygame.Surface((500,500))
     self.image.fill((23,53,25))
     self.rect = self.image.get_rect()
 
