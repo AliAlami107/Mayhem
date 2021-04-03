@@ -1,0 +1,8 @@
+# Requiremtns:
+
+- 2 Spaceship
+- Spaceship can crash
+- Must have gravity
+- Player score, ie. if shot -> decrease health and if crash -> decrease health
+- limited feul, so we have to implement a charginf area/station
+- Use of sprites.
