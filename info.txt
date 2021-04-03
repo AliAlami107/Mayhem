@@ -1,0 +1,31 @@
+I found a link where someone has done this assigment. We can use this if we are 
+unsure what to do. Here is the link: https://github.com/Adrianbakke/Mayhem
+OBS: DELETE BEFORE HAND-IN (LOL)
+
+Here are all the resources I used to create stuff.
+RESOURCES:
+This was to create obstacle with image sprite.
+http://kidscancode.org/lessons/
+
+This is for creating player sprite.
+https://www.youtube.com/playlist?list=PL6gfd5y1qB6MrYzkCKarANqEPB5M-9bEw
+
+
+We don't need to create a parent class with 'class parent(Sprite)'. Instead, 
+all of our objects will directly inherit from pygame.sprite.Sprite.
+So player(pygame.sprite.Sprite), etc. 
+
+We need to make a config.py file that contains all variables and their values.
+For example; 
+screen = ()
+FUEl = 100
+etc.
+
+Let's also make .py files for each stuff. Such as obstacle.py, player.py and etc.
+
+
+Checklist:
+I have created obstacle with an image of an asteroid in the middle of screen. DONE
+Next is to create a player class. 
+Next is to draw two players and allow them to controll.
+Next is to make collision with screen borders and asteroid obstacle.
