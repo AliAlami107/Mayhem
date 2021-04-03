@@ -20,8 +20,8 @@ class object(pygame.sprite.Sprite):
     """This class will represent every object. It derives from
     'sprite' class in pygame.
     """
-    def init(self):
-        super().init()
+    def __init__(self):
+        super().__init__()
         self.pos_x = 0
         self.pos_y = 0
         self.image = 0
@@ -30,6 +30,9 @@ class object(pygame.sprite.Sprite):
 
 
 
+class obstacle(pygame.sprite.Sprite):
+    def __init__():
+        pass
 
 
 running = True
