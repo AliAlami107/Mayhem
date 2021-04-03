@@ -6,3 +6,10 @@
 - Player score, ie. if shot -> decrease health and if crash -> decrease health
 - limited feul, so we have to implement a charginf area/station
 - Use of sprites.
+
+
+TODO list:
+- Create window                  ✔️
+- Print spaceship to screen
+- Give movement to spaceship
+- Create obstacle & give collision between it and the spaceship.
