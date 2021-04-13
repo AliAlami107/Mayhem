@@ -1,31 +1,14 @@
-I found a link where someone has done this assigment. We can use this if we are 
-unsure what to do. Here is the link: https://github.com/Adrianbakke/Mayhem
-OBS: DELETE BEFORE HAND-IN (LOL)
 
-Here are all the resources I used to create stuff.
-RESOURCES:
-This was to create obstacle with image sprite.
-http://kidscancode.org/lessons/
+'if now - self.last_shot > LASER_RATE:
+    self.last_shot = now'
+Explanation of the above line:
+1. 'now' is a timestamp of the current time 
+2. 'self.last_shot' is a variable that stores what time it was when the last bullet was fired.
+3. When the player is first created, 'self.last_shot' is assigned the value of 0, because a laser has
+yet to be fired.
+4. When the user click shoot button, the current time is compared to the time when the last bullet was fired.
+If more than 150 milliseconds have lapsed between the current time and the time when the last laser was fired,
+then a new laser is fired.
+5. When a new laser is fired, 'self.last_shot' is reassigned the value of the current time ('now'), 
+so that we can loop back to number 4 above in order to decide when to fire the next laser.
 
-This is for creating player sprite.
-https://www.youtube.com/playlist?list=PL6gfd5y1qB6MrYzkCKarANqEPB5M-9bEw
-
-
-We don't need to create a parent class with 'class parent(Sprite)'. Instead, 
-all of our objects will directly inherit from pygame.sprite.Sprite.
-So player(pygame.sprite.Sprite), etc. 
-
-We need to make a config.py file that contains all variables and their values.
-For example; 
-screen = ()
-FUEl = 100
-etc.
-
-Let's also make .py files for each stuff. Such as obstacle.py, player.py and etc.
-
-
-Checklist:
-I have created obstacle with an image of an asteroid in the middle of screen. DONE
-Next is to create a player class. 
-Next is to draw two players and allow them to controll.
-Next is to make collision with screen borders and asteroid obstacle.
