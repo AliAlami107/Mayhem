@@ -51,13 +51,16 @@ class Game:
             self.draw()
 
 # This is the game loop update
-    def update(self):
+     def update(self):
         self.all_sprites.update()   
         hits = pg.sprite.spritecollide(self.player, self.barrels, False)
         for hit in hits:
             if self.player.fuel < PLAYER_FUEL:
                 hit.kill()
                 self.player.add_fuel(FUEL_BARREL) 
+        hits = pg.sprite.spritecollide(self.player, self.lasers, True)
+        for hit in hits:
+            self.player.health -= LASER_DMG
 
     def events(self):
         for event in pg.event.get():
