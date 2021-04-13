@@ -34,6 +34,7 @@ class Game:
         self.meteors = pg.sprite.Group()
         self.barrels = pg.sprite.Group()
         self.player = Player(self, 40, 40)    
+        self.player = Player2(self, 80, 70)
         self.meteor = Meteor(self, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
         self.barrel = Barrel(self, (SCREEN_WIDTH / 2 + 50, 160 ))
         # self.meteors.add(self.meteor)    
