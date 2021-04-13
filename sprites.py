@@ -100,6 +100,82 @@ class Player(pg.sprite.Sprite):
         if self.fuel > PLAYER_FUEL:
             self.fuel = PLAYER_FUEL
 
+class Player2(pg.sprite.Sprite):
+    # The game parameter will give the player a reference to the game
+    def __init__(self, game, x, y):
+        self.groups = game.all_sprites
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.image = game.player_img
+        self.rect = self.image.get_rect()
+        self.hit_rect = PLAYER_HIT_RECT
+        self.hit_rect.center = self.rect.center 
+        self.vel = vec(0, 0)
+        self.pos = vec(x, y)
+        self.rot = 0
+        self.last_shot = 0
+        self.health = PLAYER_HEALTH
+        self.fuel = PLAYER_FUEL
+     
+ 
+    def thrust(self):
+        if self.fuel <= 0:
+            self.vel = vec(0, 0)
+
+    def get_keys(self):
+        self.rot_speed = 0
+        self.vel = vec(0, 0)
+        keys = pg.key.get_pressed() # This is going to show us what keys are being pressed
+        if keys[pg.K_a]:
+            self.rot_speed = PLAYER_ROT_SPEED
+        if keys[pg.K_d]:
+            self.rot_speed = -PLAYER_ROT_SPEED
+        if keys[pg.K_w]:
+            self.vel = vec(PLAYER_SPEED, 0).rotate(-self.rot)
+            self.fuel -= 1
+   #     if keys[pg.K_DOWN]:
+    #        self.vel = vec(-PLAYER_SPEED / 2, 0).rotate(-self.rot)
+        if keys[pg.K_g]:
+            now = pg.time.get_ticks()
+            if now - self.last_shot > LASER_RATE:
+                self.last_shot = now
+                dir = vec(1, 0).rotate(-self.rot)
+                pos = self.pos + BARREL_OFFSET.rotate(-self.rot)
+                Laser(self.game, pos, dir)
+                self.vel = vec(-KICKBACK, 0).rotate(-self.rot)
+        
+    def update(self):
+        self.get_keys()
+        self.thrust()
+        self.rot = (self.rot + self.rot_speed * self.game.dt) % 360
+        self.image = pg.transform.rotate(self.game.player_img, self.rot)
+        self.rect = self.image.get_rect()
+        self.rect.center = self.pos
+        self.pos += self.vel * self.game.dt
+        # We use self.x not rect.x because of integer values in a rectangle, and we will then lose some values.
+        self.hit_rect.centerx = self.pos.x
+        collide_with_obstacles(self, self.game.meteors, 'x')
+        self.hit_rect.centery = self.pos.y
+        collide_with_obstacles(self, self.game.meteors, 'y')
+        self.rect.center = self.hit_rect.center
+        # Checking collision with screen borders
+        if self.rect.right > SCREEN_WIDTH:
+            self.rect.right = SCREEN_WIDTH
+        if self.rect.left < 0:
+            self.rect.left = 0
+        if self.rect.top < 0:
+            self.rect.top = 0
+        if self.rect.bottom > SCREEN_WIDTH:
+            self.rect.bottom = SCREEN_WIDTH
+        if self.health <= 0:
+            self.kill()
+    
+    def add_fuel(self, amount):
+        self.fuel += amount
+        if self.fuel > PLAYER_FUEL:
+            self.fuel = PLAYER_FUEL
+       
+            
 class Meteor(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.meteors
