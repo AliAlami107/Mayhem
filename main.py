@@ -33,8 +33,8 @@ class Game:
         self.lasers = pg.sprite.Group()
         self.meteors = pg.sprite.Group()
         self.barrels = pg.sprite.Group()
-        self.player = Player(self, 40, 40)    
-        self.player = Player2(self, 80, 70)
+        self.player = Player(self, 40, 40)
+        self.player = Player2(self, 80, 70)    
         self.meteor = Meteor(self, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
         self.barrel = Barrel(self, (SCREEN_WIDTH / 2 + 50, 160 ))
         # self.meteors.add(self.meteor)    
@@ -52,16 +52,13 @@ class Game:
             self.draw()
 
 # This is the game loop update
-     def update(self):
+    def update(self):
         self.all_sprites.update()   
         hits = pg.sprite.spritecollide(self.player, self.barrels, False)
         for hit in hits:
             if self.player.fuel < PLAYER_FUEL:
                 hit.kill()
                 self.player.add_fuel(FUEL_BARREL) 
-        hits = pg.sprite.spritecollide(self.player, self.lasers, True)
-        for hit in hits:
-            self.player.health -= LASER_DMG
 
     def events(self):
         for event in pg.event.get():
@@ -74,7 +71,6 @@ class Game:
 
     def draw(self):
         # This it to see the fps of the game, allows us to find out if game is lagging
-        pg.display.set_caption("{:.2f}".format(self.clock.get_fps()))
         self.screen.blit(self.bg_img, (0, 0))
         self.all_sprites.draw(self.screen)
         self.meteors.draw(self.screen)
