@@ -82,12 +82,12 @@ class Game:
                 hit.kill()
                 self.player2.add_fuel(FUEL_BARREL) 
      # Checking for collision between players and lasers
-        hits = pg.sprite.spritecollide(self.player2, self.lasers1, True)
+        hits = pg.sprite.spritecollide(self.player2, self.lasers1, False)
         for hit in hits:    
             self.player2.health -= LASER_DMG
             self.player1.score += PLAYER_SCORE
 
-        hits = pg.sprite.spritecollide(self.player1, self.lasers2, True)
+        hits = pg.sprite.spritecollide(self.player1, self.lasers2, False)
         for hit in hits:
             self.player1.health -= LASER_DMG
             self.player2.score += PLAYER_SCORE
