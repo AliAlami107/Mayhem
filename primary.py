@@ -1,5 +1,6 @@
 import pygame 
 import sys
+import random
 from os import path
 from config import *
 from sprites import *
@@ -52,7 +53,12 @@ class Game:
     
 
         self.meteor = Meteor(self, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-        self.barrel = Barrel(self, (SCREEN_WIDTH / 2 + 50, 160 ))
+        self.barrel = Barrel(self, (random.randrange(0, SCREEN_WIDTH - 50), 
+                                    random.randrange(0, SCREEN_HEIGHT - 50)))
+        self.barrel = Barrel(self, (random.randrange(0, SCREEN_WIDTH - 50), 
+                                    random.randrange(0, SCREEN_HEIGHT - 50)))
+        self.barrel = Barrel(self, (random.randrange(0, SCREEN_WIDTH - 50), 
+                                    random.randrange(0, SCREEN_HEIGHT - 50)))
   
         self.run()
 
