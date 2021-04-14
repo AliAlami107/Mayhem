@@ -4,11 +4,6 @@ import random
 from os import path
 from config import *
 from sprites import *
-from pygame import mixer
-pygame.init()
-
-mixer.music.load('Sound\music.mp3')
-mixer.music.play()
 
 # Defining method to draw the score, later call it in draw(). 
 def draw_text(surf, text, size, x, y):
